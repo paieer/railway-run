@@ -11,9 +11,8 @@ mkdir -p /etc/caddy/ /usr/share/caddy && echo -e "User-agent: *\nDisallow: /" >/
 wget $CADDYIndexPage -O /usr/share/caddy/index.html && unzip -qo /usr/share/caddy/index.html -d /usr/share/caddy/ && mv /usr/share/caddy/*/* /usr/share/caddy/
 wget -qO- $CONFIGCADDY | sed -e "1c :$PORT" >/etc/caddy/Caddyfile
 wget -qO- $CONFIGXCORE | sed -e "s/\$AUUID/$AUUID/g" > /etc/xcore.json
+
+echo $AUUID
 # start
-# tor &
-
 /xcore -config /etc/xcore.json &
-
 caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
