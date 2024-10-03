@@ -1,0 +1,37 @@
+{
+    "inbounds": 
+    [
+        {
+            "listen": "/etc/caddy/vless","protocol": "vless",
+            "settings": {"clients": [{"id": "$AUUID"}],"decryption": "none"},
+            "streamSettings": {"network": "ws","security": "none","wsSettings": {"path": "/hjghvl"}}
+        }
+    ],
+    
+    "outbounds": 
+    [
+        {
+            "protocol":"freedom",
+            "settings": {
+                "domainStrategy":"UseIP"
+            },
+            "tag":"z_direct_outbound"
+        }
+    ],
+    
+    "routing": 
+    {
+        "rules": 
+        [
+            {
+                "type": "field",
+                "domain": [
+                  "domain:gstatic.com",
+                  "domain:googleapis.com",
+                  "domain:googleapis.cn"
+                ],
+                "outboundTag": "z_direct_outbound"
+            }
+        ]
+    }
+}
