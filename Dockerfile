@@ -13,4 +13,4 @@ ARG SSID
 
 RUN chmod +x /start.sh
 
-CMD ["/start.sh","$SSID"]
+CMD ["/start.sh",$SSID]
